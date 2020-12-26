@@ -1,4 +1,24 @@
+## Demo link
+
+You can see live demo by clicking [here]() 
+
+### Things covered in this project
+
+- [ ] Create a layout box 
+- [ ] create mock data with list of freinds
+- [ ] create pagination func for more than 4 entries
+- [ ] create fav and delete functionality.
+- [ ] create search friend functionality.
+- [ ] create add friend functionality.
+
+-------
+- [ ] add some tests .
+- [ ] add confirmation box before deleting .
+
+
+
 # Getting Started with Create React App
+
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
