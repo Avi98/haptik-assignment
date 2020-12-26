@@ -3,13 +3,13 @@ import { useEffect, useState } from "react";
 import "./App.css";
 import { Layout } from "./components";
 import { fetchFriends } from "./server";
+import { FriendsList } from "./containers";
 
 function App() {
   const [friendsList, setFriendsList] = useState([]);
   const [showLoading, setShowLoading] = useState(false);
 
   const getFriends = () => {
-
     setShowLoading(true);
     fetchFriends()
       .then((list) => {
@@ -29,7 +29,8 @@ function App() {
   return (
     <div className="App">
       <Layout>
-        <div>hi</div>
+       
+       <FriendsList list ={friendsList} />
       </Layout>
     </div>
   );

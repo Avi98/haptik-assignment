@@ -4,8 +4,8 @@ You can see live demo by clicking [here]()
 
 ### Things covered in this project
 
-- [ ] Create a layout box 
-- [ ] create mock data with list of freinds
+- [X] Create a layout box 
+- [X] create mock data with list of freinds
 - [ ] create pagination func for more than 4 entries
 - [ ] create fav and delete functionality.
 - [ ] create search friend functionality.
