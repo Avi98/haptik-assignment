@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 
 export const usePagination = (friendLists) => {
-  console.log("-------->", friendLists);
   const [currentPage, setCurrentPage] = useState(1);
   const [friends, setFriends] = useState([]);
   const [pageNumbers, setPageNumbers] = useState([]);

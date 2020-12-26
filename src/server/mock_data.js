@@ -19,8 +19,7 @@ export const friendsList = [
 export const mockFetchFriendsApi = () =>{
     return  new Promise((res, rej)=>{
         setTimeout(()=>{
-            res([...friendsList, ...friendsList, ...friendsList, ...friendsList])
-            // res(friendsList)
+            res(friendsList)
         },1000)
         if(!friendsList){
             rej('no list')
