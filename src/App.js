@@ -1,9 +1,31 @@
-import logo from './logo.svg';
-import './App.css';
+import { useEffect, useState } from "react";
 
-import { Layout } from './components';
+import "./App.css";
+import { Layout } from "./components";
+import { fetchFriends } from "./server";
 
 function App() {
+  const [friendsList, setFriendsList] = useState([]);
+  const [showLoading, setShowLoading] = useState(false);
+
+  const getFriends = () => {
+
+    setShowLoading(true);
+    fetchFriends()
+      .then((list) => {
+        setFriendsList(list);
+        setShowLoading(false);
+      })
+      .catch( _ => {
+        setShowLoading(false);
+      });
+  };
+
+  useEffect(() => {
+    getFriends();
+  }, []);
+
+  if(showLoading) return <Layout><div>loading....</div> </Layout>
   return (
     <div className="App">
       <Layout>

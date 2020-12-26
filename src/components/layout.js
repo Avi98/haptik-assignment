@@ -10,8 +10,10 @@ const Container = styled.div`
  
  .box{
    border: var(--border);
-   border-radius: var(--border-radius);
    padding: 40px;
+   min-height: calc(100vh - 30%);
+   min-width: calc(100vw - 60%);
+   border-radius: var(--border-radius);
  }
 `
 export const Layout = ({children}) =>{

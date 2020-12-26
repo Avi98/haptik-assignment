@@ -1,0 +1,1 @@
+export {fetchFriends} from './fetchFriends';
