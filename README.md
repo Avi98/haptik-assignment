@@ -5,14 +5,14 @@ You can see live demo by clicking [here]()
 ### Things covered in this project
 
 - [X] Create a layout box 
-- [X] create mock data with list of freinds
-- [ ] create pagination func for more than 4 entries
+- [X] create mock data with list of friends
+- [X] create pagination func for more than 4 entries
 - [ ] create fav and delete functionality.
 - [ ] create search friend functionality.
 - [ ] create add friend functionality.
 
 -------
-- [ ] add some tests .
+- [ ] add tests .
 - [ ] add confirmation box before deleting .
 
 
