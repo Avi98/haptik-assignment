@@ -45,7 +45,7 @@ export const mockAddFriendApi = (payload) =>{
             ];
             friendsList=list 
             window.localStorage.setItem("friendsList", JSON.stringify(friendsList));
-            // debugger
+        // debugger
 
             res()
         },1000)
