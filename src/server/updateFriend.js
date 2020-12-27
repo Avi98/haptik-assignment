@@ -1,6 +1,9 @@
-import { mockFetchFriendsApi } from "./mock_data"
+import { mockDeleteFriendApi, mockUpdatedFriendApi } from "./mock_data"
 
-export const fetchFriends = async () =>{
-    let friendsList =  await mockFetchFriendsApi()
-    return friendsList;
+export const updateFriends = async (payload) =>{
+    await mockUpdatedFriendApi(payload)
+}
+export const deleteFriendServer = async (id) =>{
+     await mockDeleteFriendApi(id)
+    // return friendsList;
 }

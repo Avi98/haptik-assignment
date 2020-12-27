@@ -57,13 +57,27 @@ export const mockAddFriendApi = (payload) =>{
 export const mockUpdatedFriendApi = (payload) =>{
     return  new Promise((res, rej)=>{
         setTimeout(()=>{
-            const list  = friendsList.map(item=>item.id !==payload.id ? {...item, ...payload} : item)
+            friendsList = payload
+            window.localStorage.setItem("friendsList", JSON.stringify(friendsList));
+
+            res()
+        },100)
+        if(!payload){
+            rej('no item')
+        }
+    })
+}
+
+export const mockDeleteFriendApi = (id) =>{
+    return  new Promise((res, rej)=>{
+        setTimeout(()=>{
+            const list  = friendsList.filter(item => item.id !== id)
             friendsList = list
             window.localStorage.setItem("friendsList", JSON.stringify(friendsList));
 
             res()
-        },1000)
-        if(!payload){
+        },100)
+        if(!id){
             rej('no item')
         }
     })

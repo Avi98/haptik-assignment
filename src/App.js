@@ -7,6 +7,7 @@ import { Layout, Pagination, SortBy } from "./components";
 import { usePagination } from "./usePagination";
 import { AddNewFriend } from "./server/addFriend";
 import { useDebounce } from "./useDebounce";
+import { updateFriends, deleteFriendServer} from "./server/updateFriend";
 
 function App() {
   
@@ -16,7 +17,7 @@ function App() {
   const [searchTerm, setSearchTerm] = useState('')
 
   const { friends, pageNumbers, handleClick, setFriends } = usePagination(friendsList);
-  const debouncedValue = useDebounce(searchTerm, 500)
+  const debouncedValue = useDebounce(searchTerm, 100)
 
   const friendsListRef = useRef(null) // holds reference for the all fetched friends list
   const sortFriendsRef = useRef(null) // holds reference for sorting 
@@ -43,9 +44,10 @@ function App() {
   useEffect(()=>{
     if(debouncedValue){
       setIsListLoading(true)
-      setFriendsList((state) =>
-        state.filter((friend) => friend.name.includes(debouncedValue))
+      const filterSearchValue = friendsListRef.current.filter((friend) =>
+        friend.name.toLowerCase().includes(debouncedValue.toLowerCase())
       );
+      setFriendsList(filterSearchValue)
       setIsListLoading(false) 
     }else{
       setFriendsList(friendsListRef.current)
@@ -85,10 +87,14 @@ function App() {
       }
     }, [])
     setFriends(updatedFriendsList);
+    updateFriends(updatedFriendsList) //async should not block render
+
+
   };
 
   const deleteFriend = (id) =>{
     setFriendsList(state=> state.filter(item=> item.id !==id))
+    deleteFriendServer(id)
   }
   const searchOnChange = (e) =>{
     setSearchTerm(e.target.value)
@@ -109,7 +115,7 @@ function App() {
     <div className="App">
       <Layout>
         <SortBy options={["none", "favorite"]} handleChange={sortByChange} />
-        <SearchFields onChange={searchOnChange} />
+        <SearchFields onChange={searchOnChange} value={searchTerm}/>
         <FriendsList
           list={friends}
           addNewFriend={addNewFriend}
