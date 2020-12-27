@@ -16,7 +16,7 @@ export const Pagination = ({ pageNumbers = [], onClick }) => (
   <PaginationButtons>
     {pageNumbers.length > 1 &&
       pageNumbers.map((number) => (
-        <Button id={`${number}`} onClick={onClick} type="button">
+        <Button key={number} id={`${number}`} onClick={onClick} type="button">
           {number}
         </Button>
       ))}

@@ -15,7 +15,7 @@ function App() {
   const [isListLoading, setIsListLoading] = useState(false);
   const [searchTerm, setSearchTerm] = useState('')
 
-  const { friends, pageNumbers, handleClick } = usePagination(friendsList);
+  const { friends, pageNumbers, handleClick, setFriends } = usePagination(friendsList);
   const debouncedValue = useDebounce(searchTerm, 500)
 
   const friendsListRef = useRef(friendsList) // holds reference for the all fetched friends list
@@ -46,7 +46,6 @@ function App() {
       );
       setIsListLoading(false) 
     }else{
-      console.log('freinds---->',friendsListRef)
       setFriendsList(friendsListRef.current)
     }
 
@@ -63,10 +62,32 @@ function App() {
     setIsListLoading(true);
     AddNewFriend(newFriend).then(() => {
       setFriendsList((state) => [newFriend, ...state]);
+      friendsListRef.current = [newFriend,...friendsList]; 
       setIsListLoading(false);
     });
   };
 
+  const likeFriend = (id) => {
+
+    const updatedFriendsList = friends.reduce((prev, item) => {
+      if (item.id === id) {
+        return [
+          ...prev,
+          {
+            ...item,
+            isFav: item.isFav ? false : true,
+          },
+        ];
+      } else {
+        return [...prev, item];
+      }
+    }, [])
+    setFriends(updatedFriendsList);
+  };
+
+  const deleteFriend = (id) =>{
+    setFriendsList(state=> state.filter(item=> item.id !==id))
+  }
   const searchOnChange = (e) =>{
     setSearchTerm(e.target.value)
   }
@@ -78,6 +99,8 @@ function App() {
           list={friends}
           addNewFriend={addNewFriend}
           loading={isListLoading}
+          likeFriend={likeFriend}
+          deleteFriend={deleteFriend}
         />
         <Pagination pageNumbers={pageNumbers} onClick={handleClick} />
       </Layout>

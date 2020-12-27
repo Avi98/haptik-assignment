@@ -4,10 +4,10 @@ import { BsStarFill } from "react-icons/bs";
 import { Button } from './style';
 
 
-export const FavoriteButton = ({like, onClick}) =>{
+export const FavoriteButton = ({like,id, ...rest}) =>{
     return (
-      <Button type="button" onClick={onClick}>
-        {like ? <BsStarFill /> : <BsStar />}
+      <Button type="button" id={id} {...rest}>
+        {like ? <BsStarFill id={id}/> : <BsStar id={id}/>}
       </Button>
     );
 }

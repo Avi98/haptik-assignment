@@ -36,5 +36,5 @@ export const usePagination = (friendLists) => {
     setCurrentPage(Number(id));
   };
 
-  return { friends, pageNumbers, handleClick };
+  return { friends, pageNumbers, handleClick , setFriends};
 };

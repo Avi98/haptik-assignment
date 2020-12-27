@@ -1,32 +1,33 @@
 export let friendsList = [
     {
-        id:1,
+        id:"1",
         name:'Rahul Gupta',
         subMessage:'is your friend',
         isFav: true
     },
     {
-        id:2,
+        id:"2",
         name:'Shivangi Sharma',
         subMessage:'is your friend',
-        isFav: true
+        isFav: false
     },
     {
-        id:3,
+        id:"3",
         name:'Akash Singh',
         subMessage:'is your friend',
-        isFav: true
+        isFav: false
     },
 ]
 
 export const mockFetchFriendsApi = () =>{
     return  new Promise((res, rej)=>{
         setTimeout(()=>{
-            const lists = window.localStorage.getItem('friendsList', )
-            if(!lists){
-                window.localStorage.setItem('friendsList', JSON.stringify(friendsList))
-            }
-            res(JSON.parse(lists))
+            // const lists = window.localStorage.getItem('friendsList', )
+            // if(!lists){
+            //     window.localStorage.setItem('friendsList', JSON.stringify(friendsList))
+            // }
+            // res(JSON.parse(lists))
+            res(friendsList)
         },1000)
         if(!friendsList){
             rej('no list')
@@ -44,8 +45,7 @@ export const mockAddFriendApi = (payload) =>{
               ...friendsList,
             ];
             friendsList=list 
-            window.localStorage.setItem("friendsList", JSON.stringify(friendsList));
-        // debugger
+            // window.localStorage.setItem("friendsList", JSON.stringify(friendsList));
 
             res()
         },1000)

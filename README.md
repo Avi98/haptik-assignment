@@ -9,12 +9,12 @@ You can see live demo by clicking [here]()
 - [X] create pagination func for more than 4 entries
 - [X] create add friend functionality. Persist it in localStorage with uniqueId.
 - [X] create search friend functionality with debounce.
-- [ ] create fav and delete functionality.
+- [X] create fav and delete functionality.
 - [ ] sort based on fav
 
 -------
+- [X] add confirmation box before deleting.
 - [ ] add tests.
-- [ ] add confirmation box before deleting.
 
 
 
