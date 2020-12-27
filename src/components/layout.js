@@ -14,6 +14,7 @@ const Container = styled.div`
    min-height: calc(100vh - 30%);
    min-width: calc(100vw - 60%);
    border-radius: var(--border-radius);
+   position: relative;
  }
 `
 export const Layout = ({children}) =>{

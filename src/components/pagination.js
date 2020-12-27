@@ -1,10 +1,24 @@
-import React from 'react';
-import { Button } from './style';
+import React from "react";
+import styled from "styled-components";
+import { Button } from "./style";
 
+const PaginationButtons = styled.div`
+  display: flex;
+  margin: 5px;
+  position: absolute;
+  right: 40px;
+  >button{
+    margin-left:2px;
+  }
+`;
 
-export const Pagination = ({ pageNumbers=[], onClick }) =>
-pageNumbers.length > 1 && pageNumbers.map((number) => (
-    <Button id={`${number}`} onClick={onClick}>
-      {number}
-    </Button>
-  ));
+export const Pagination = ({ pageNumbers = [], onClick }) => (
+  <PaginationButtons>
+    {pageNumbers.length > 1 &&
+      pageNumbers.map((number) => (
+        <Button id={`${number}`} onClick={onClick} type="button">
+          {number}
+        </Button>
+      ))}
+  </PaginationButtons>
+);

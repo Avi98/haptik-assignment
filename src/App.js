@@ -3,12 +3,14 @@ import { useEffect, useState } from "react";
 import "./App.css";
 import { fetchFriends } from "./server";
 import { FriendsList } from "./containers";
-import { Layout, Pagination } from "./components";
+import { Layout, Pagination, Input } from "./components";
 import { usePagination } from "./usePagination";
+import { AddNewFriend } from "./server/addFriend";
 
 function App() {
   const [friendsList, setFriendsList] = useState([]);
   const [showLoading, setShowLoading] = useState(false);
+  const [isListLoading, setIsListLoading] = useState(false);
   const { friends, pageNumbers, handleClick } = usePagination(friendsList);
 
   const getFriends = () => {
@@ -34,10 +36,21 @@ function App() {
       </Layout>
     );
 
+  const addNewFriend = (newFriend) => {
+    setIsListLoading(true);
+    AddNewFriend(newFriend).then(() => {
+      setFriendsList((state) => [newFriend, ...state]);
+      setIsListLoading(false);
+    });
+  };
   return (
     <div className="App">
       <Layout>
-        <FriendsList list={friends} />
+        <FriendsList
+          list={friends}
+          addNewFriend={addNewFriend}
+          loading={isListLoading}
+        />
         <Pagination pageNumbers={pageNumbers} onClick={handleClick} />
       </Layout>
     </div>

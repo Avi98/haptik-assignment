@@ -7,13 +7,14 @@ You can see live demo by clicking [here]()
 - [X] Create a layout box 
 - [X] create mock data with list of friends
 - [X] create pagination func for more than 4 entries
+- [X] create add friend functionality. Persist it in localStorage with uniqueId.
 - [ ] create fav and delete functionality.
-- [ ] create search friend functionality.
-- [ ] create add friend functionality.
+- [ ] sort based on fav
+- [ ] create search friend functionality with debounce.
 
 -------
-- [ ] add tests .
-- [ ] add confirmation box before deleting .
+- [ ] add tests.
+- [ ] add confirmation box before deleting.
 
 
 
