@@ -29,7 +29,7 @@ export const usePagination = (friendLists) => {
     } else {
       setFriends(friendLists);
     }
-  }, [currentPage, JSON.stringify(friendLists)]);
+  }, [currentPage, JSON.stringify(friendLists), friendLists]);
 
   const handleClick = ({ target: { id } }) => {
     setCurrentPage(Number(id));
