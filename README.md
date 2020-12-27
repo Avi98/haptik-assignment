@@ -8,9 +8,9 @@ You can see live demo by clicking [here]()
 - [X] create mock data with list of friends
 - [X] create pagination func for more than 4 entries
 - [X] create add friend functionality. Persist it in localStorage with uniqueId.
+- [X] create search friend functionality with debounce.
 - [ ] create fav and delete functionality.
 - [ ] sort based on fav
-- [ ] create search friend functionality with debounce.
 
 -------
 - [ ] add tests.
