@@ -46,7 +46,7 @@ function App() {
       setIsListLoading(true)
       const filterSearchValue = friendsListRef.current.filter((friend) =>
         friend.name.toLowerCase().includes(debouncedValue.toLowerCase())
-      );
+      ).slice(0,4);
       setFriendsList(filterSearchValue)
       setIsListLoading(false) 
     }else{
@@ -102,12 +102,12 @@ function App() {
 
   const sortByChange = (e) =>{
     if(e.target.value ==='favorite'){
-      const sortedByFav = [...friends].sort((friend1, friend2)=> {
+      const sortedByFav = [...sortFriendsRef.current].sort((friend1, _)=> {
         return friend1.isFav ? -1 : 1
       })
-      setFriends(sortedByFav)
+      setFriendsList(sortedByFav)
     }else{
-      setFriends(sortFriendsRef.current)
+      setFriendsList(sortFriendsRef.current)
 
     }
   }
