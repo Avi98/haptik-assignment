@@ -64,9 +64,9 @@ function App() {
 
   const addNewFriend = (newFriend) => {
     setIsListLoading(true);
-    AddNewFriend(newFriend).then(() => {
-      setFriendsList((state) => [newFriend, ...state]);
-      friendsListRef.current = [newFriend,...friendsList]; 
+    AddNewFriend(newFriend).then((res) => {
+      setFriendsList(res);
+      friendsListRef.current = res; 
       setIsListLoading(false);
     });
   };
@@ -103,7 +103,7 @@ function App() {
   const sortByChange = (e) =>{
     if(e.target.value ==='favorite'){
       const sortedByFav = [...friends].sort((friend1, friend2)=> {
-        return friend2.isFav ? 1 : -1
+        return friend1.isFav ? -1 : 1
       })
       setFriends(sortedByFav)
     }else{

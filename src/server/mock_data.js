@@ -46,8 +46,7 @@ export const mockAddFriendApi = (payload) =>{
             ];
             friendsList=list 
             window.localStorage.setItem("friendsList", JSON.stringify(friendsList));
-
-            res()
+            res(friendsList)
         },1000)
         if(!payload){
             rej('no item')
