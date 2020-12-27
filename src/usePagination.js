@@ -30,7 +30,7 @@ export const usePagination = (friendLists) => {
     } else {
       setFriends(friendLists);
     }
-  }, [currentPage,  friendLists.length, friendListsString]);
+  }, [currentPage,  friendLists, friendListsString]);
 
   const handleClick = ({ target: { id } }) => {
     setCurrentPage(Number(id));
