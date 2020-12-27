@@ -8,8 +8,7 @@ export const usePagination = (friendLists) => {
   const friendListPerPage = 4;
 
   useEffect(() => {
-    debugger
-    if (friendLists?.length > friendListPerPage || friendLists?.length) {
+    if (friendLists?.length > friendListPerPage || friendLists?.length > 1) {
       const indexOfLastPage = currentPage * friendListPerPage;
       const indexOfFirstPage = indexOfLastPage - friendListPerPage;
 
