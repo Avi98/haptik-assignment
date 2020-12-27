@@ -8,7 +8,8 @@ export const usePagination = (friendLists) => {
   const friendListPerPage = 4;
 
   useEffect(() => {
-    if (friendLists?.length > friendListPerPage) {
+    debugger
+    if (friendLists?.length > friendListPerPage || friendLists?.length) {
       const indexOfLastPage = currentPage * friendListPerPage;
       const indexOfFirstPage = indexOfLastPage - friendListPerPage;
 
@@ -17,7 +18,6 @@ export const usePagination = (friendLists) => {
         indexOfLastPage
       );
       setFriends(friendsToShow);
-
       const pageNumbers = [];
       for (
         let i = 1;

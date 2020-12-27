@@ -61,7 +61,11 @@ const ListContainer = styled.div`
     margin: auto;
     font-size: 14px;
     font-weight: 600;
-    margin: auto;
+    
+    max-width: 200px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
   > ul > li > div > p.subTitle {
     font-size: 10px;
@@ -113,6 +117,10 @@ export const FriendsList = ({
     deleteFriend(currentDeleteId);
     setCurrentDeleteId(null);
   };
+  
+  const closeModal = () =>{
+    setShowDeleteModal(false);
+  }
 
   return (
     <ListContainer>
@@ -133,6 +141,7 @@ export const FriendsList = ({
           <DeleteDialog
             showDeleteModal={showDeleteModal}
             handleDeleteWrapper={handleDeleteWrapper}
+            closeModal={closeModal}
           />
           <ul>
             {list?.map(({ name, subMessage, isFav, id }, i) => (
@@ -143,7 +152,7 @@ export const FriendsList = ({
                 </div>
                 <div className="flex-row">
                   <FavoriteButton id={id} like={isFav} onClick={handelLike} />
-                  <DeleteButton id={id} onClick={handleDelete} />
+                  <DeleteButton id={id} onClick={handleDelete}/>
                 </div>
               </li>
             ))}

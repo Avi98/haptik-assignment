@@ -22,12 +22,12 @@ export let friendsList = [
 export const mockFetchFriendsApi = () =>{
     return  new Promise((res, rej)=>{
         setTimeout(()=>{
-            // const lists = window.localStorage.getItem('friendsList', )
-            // if(!lists){
-            //     window.localStorage.setItem('friendsList', JSON.stringify(friendsList))
-            // }
-            // res(JSON.parse(lists))
-            res(friendsList)
+            const lists = window.localStorage.getItem('friendsList', ) 
+            if(!lists){
+                window.localStorage.setItem('friendsList', JSON.stringify(friendsList))
+            }
+            res(JSON.parse(lists) || friendsList)
+            // res(friendsList)
         },1000)
         if(!friendsList){
             rej('no list')
@@ -45,7 +45,21 @@ export const mockAddFriendApi = (payload) =>{
               ...friendsList,
             ];
             friendsList=list 
-            // window.localStorage.setItem("friendsList", JSON.stringify(friendsList));
+            window.localStorage.setItem("friendsList", JSON.stringify(friendsList));
+
+            res()
+        },1000)
+        if(!payload){
+            rej('no item')
+        }
+    })
+}
+export const mockUpdatedFriendApi = (payload) =>{
+    return  new Promise((res, rej)=>{
+        setTimeout(()=>{
+            const list  = friendsList.map(item=>item.id !==payload.id ? {...item, ...payload} : item)
+            friendsList = list
+            window.localStorage.setItem("friendsList", JSON.stringify(friendsList));
 
             res()
         },1000)

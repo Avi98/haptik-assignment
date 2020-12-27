@@ -10,7 +10,7 @@ You can see live demo by clicking [here]()
 - [X] create add friend functionality. Persist it in localStorage with uniqueId.
 - [X] create search friend functionality with debounce.
 - [X] create fav and delete functionality.
-- [ ] sort based on fav
+- [X] sort based on fav
 
 -------
 - [X] add confirmation box before deleting.

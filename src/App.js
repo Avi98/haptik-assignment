@@ -3,7 +3,7 @@ import { useEffect, useRef, useState } from "react";
 import "./App.css";
 import { fetchFriends } from "./server";
 import { FriendsList, SearchFields } from "./containers";
-import { Layout, Pagination, Input } from "./components";
+import { Layout, Pagination, SortBy } from "./components";
 import { usePagination } from "./usePagination";
 import { AddNewFriend } from "./server/addFriend";
 import { useDebounce } from "./useDebounce";
@@ -18,7 +18,8 @@ function App() {
   const { friends, pageNumbers, handleClick, setFriends } = usePagination(friendsList);
   const debouncedValue = useDebounce(searchTerm, 500)
 
-  const friendsListRef = useRef(friendsList) // holds reference for the all fetched friends list
+  const friendsListRef = useRef(null) // holds reference for the all fetched friends list
+  const sortFriendsRef = useRef(null) // holds reference for sorting 
 
   const getFriends = () => {
     setShowLoading(true);
@@ -26,6 +27,7 @@ function App() {
       .then((list) => {
         setFriendsList(list);
         friendsListRef.current = list
+        sortFriendsRef.current = list
         setShowLoading(false);
       })
       .catch((_) => {
@@ -91,10 +93,23 @@ function App() {
   const searchOnChange = (e) =>{
     setSearchTerm(e.target.value)
   }
+
+  const sortByChange = (e) =>{
+    if(e.target.value ==='favorite'){
+      const sortedByFav = [...friends].sort((friend1, friend2)=> {
+        return friend2.isFav ? 1 : -1
+      })
+      setFriends(sortedByFav)
+    }else{
+      setFriends(sortFriendsRef.current)
+
+    }
+  }
   return (
     <div className="App">
       <Layout>
-        <SearchFields onChange={searchOnChange}/>
+        <SortBy options={["none", "favorite"]} handleChange={sortByChange} />
+        <SearchFields onChange={searchOnChange} />
         <FriendsList
           list={friends}
           addNewFriend={addNewFriend}
