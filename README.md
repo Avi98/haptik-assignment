@@ -1,6 +1,6 @@
 ## Demo link
 
-You can see live demo by clicking [here]() 
+You can see live demo by clicking [here](https://haptik-assignment.netlify.app/) 
 
 ### Things covered in this project
 
