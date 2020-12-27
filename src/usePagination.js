@@ -7,6 +7,7 @@ export const usePagination = (friendLists) => {
 
   const friendListPerPage = 4;
 
+  const friendListsString = JSON.stringify(friendLists)
   useEffect(() => {
     if (friendLists?.length > friendListPerPage || friendLists?.length > 1) {
       const indexOfLastPage = currentPage * friendListPerPage;
@@ -29,7 +30,7 @@ export const usePagination = (friendLists) => {
     } else {
       setFriends(friendLists);
     }
-  }, [currentPage, JSON.stringify(friendLists), friendLists]);
+  }, [currentPage,  friendLists.length, friendListsString]);
 
   const handleClick = ({ target: { id } }) => {
     setCurrentPage(Number(id));
